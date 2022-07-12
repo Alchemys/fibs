@@ -9,6 +9,7 @@ import com.townsendsoftware.exercises.fibs_example.generators.GenerateFibonacciS
 import java.util.List;
 import org.apache.commons.collections4.CollectionUtils;
 
+import static com.townsendsoftware.exercises.fibs_example.constants.FibsConstants.MAX_ITERATIONS;
 import static com.townsendsoftware.exercises.fibs_example.constants.FibsConstants.SYSTEM_LINE_SEP;
 
 /*
@@ -32,7 +33,7 @@ public class FibsApp {
       if (cliConfig.parseArguments(args)) {
         // Successfully parsed the command line arguments.
   
-        if (cliConfig.iterationCount <= 50 && cliConfig.iterationCount > 0 ) {
+        if (cliConfig.iterationCount <= MAX_ITERATIONS && cliConfig.iterationCount > 0 ) {
           // We now have the expected iteration count, run the Fibonacci Sequence
           List<Long> sequences = GenerateFibonacciSequence.generateSequence(0, 1, cliConfig.iterationCount);
           if (CollectionUtils.isNotEmpty(sequences)) {
@@ -54,7 +55,7 @@ public class FibsApp {
           }
 
         } else {
-            log.info("Provided iteration count [{}], is out of range.  Must be between 1 and 50", cliConfig.iterationCount);
+            log.error("Provided iteration count [{}], is out of range.  Must be between 1 and {}", cliConfig.iterationCount, MAX_ITERATIONS);
         }
 
       } else {
