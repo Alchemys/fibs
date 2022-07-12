@@ -1,10 +1,14 @@
 package com.townsendsoftware.exercises.fibs_example.cli;
 
 import com.townsendsoftware.exercises.fibs_example.utils.LogUtils;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
+@Slf4j
 public class CliProcessor {
 
   @Option(name = "-i", required = true, usage = "Iteration Count. Valid values 1 - 50.")
@@ -24,7 +28,7 @@ public class CliProcessor {
   }
 
   protected void printArgs() {
-    LogUtils.logMessage(String.format("IterationCount: [%d]", iterationCount));
+    log.info("IterationCount: [{}]", iterationCount);
   }
 
 }
